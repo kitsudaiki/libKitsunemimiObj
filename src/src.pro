@@ -15,14 +15,14 @@ INCLUDEPATH += $$PWD \
 LIBS +=  -lfl -ly
 
 SOURCES += \
-    libKitsuneObj.cpp \
     objConverter.cpp \
-    obj_parsing/objParserInterface.cpp
+    obj_parsing/objParserInterface.cpp \
+    obj_item.cpp
 
 HEADERS += \
-    ../include/libKitsuneObj/libKitsuneObj.h \
-    objConverter.h \
-    obj_parsing/objParserInterface.h
+    ../include/libKitsunemimiObj/obj_item.h \
+    obj_parsing/obj_parserInterface.h \
+    obj_converter.h
 
 FLEXSOURCES = grammar/objlexer.l
 BISONSOURCES = grammar/objparser.y

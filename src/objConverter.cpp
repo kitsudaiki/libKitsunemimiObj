@@ -7,11 +7,11 @@
  *  MIT License
  */
 
-#include <objConverter.h>
-#include <obj_parsing/objParserInterface.h>
+#include <obj_converter.h>
+#include <obj_parsing/obj_parserInterface.h>
 #include <jsonItems.hpp>
 
-namespace Kitsune
+namespace Kitsunemimi
 {
 namespace Obj
 {
@@ -53,4 +53,4 @@ ObjConverter::convert(const std::string &templateString)
 
 
 }  // namespace Obj
-}  // namespace Kitsune
+}  // namespace Kitsunemimi

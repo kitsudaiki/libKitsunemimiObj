@@ -7,15 +7,14 @@
  *  MIT License
  */
 
-#ifndef JINJA2CONVERTER_H
-#define JINJA2CONVERTER_H
+#ifndef OBJCONVERTER_H
+#define OBJCONVERTER_H
 
 #include <utility>
 #include <vector>
 #include <string>
-#include <jsonItems.hpp>
 
-namespace Kitsune
+namespace Kitsunemimi
 {
 namespace Obj
 {
@@ -27,7 +26,7 @@ public:
     ObjConverter(const bool traceParsing = false);
     ~ObjConverter();
 
-    std::pair<Json::JsonItem*, bool> convert(const std::string &templateString);
+    bool convert(const std::string &input);
 
 private:
 
@@ -39,4 +38,4 @@ private:
 }  // namespace Obj
 }  // namespace Kitsune
 
-#endif // JINJA2CONVERTER_H
+#endif // OBJCONVERTER_H

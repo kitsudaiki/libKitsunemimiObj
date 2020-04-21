@@ -7,15 +7,15 @@
  *  MIT License
  */
 
-#include <obj_parsing/objParserInterface.h>
+#include <obj_parsing/obj_parserInterface.h>
 #include <objparser.h>
-#include <objConverter.h>
+#include <obj_converter.h>
 
 # define YY_DECL \
-    Kitsune::Obj::ObjParser::symbol_type objlex (Kitsune::Obj::ObjParserInterface& driver)
+    Kitsunemimi::Obj::ObjParser::symbol_type objlex (Kitsune::Obj::ObjParserInterface& driver)
 YY_DECL;
 
-namespace Kitsune
+namespace Kitsunemimi
 {
 namespace Obj
 {
@@ -44,7 +44,7 @@ ObjParserInterface::parse(const std::string &inputString)
 
     // run parser-code
     this->scan_begin(inputString);
-    Kitsune::Obj::ObjParser parser(*this);
+    Kitsunemimi::Obj::ObjParser parser(*this);
     int res = parser.parse();
     this->scan_end();
 
@@ -80,8 +80,8 @@ ObjParserInterface::getOutput() const
  * @param message error-specific message from the parser
  */
 void
-ObjParserInterface::error(const Kitsune::Obj::location& location,
-                             const std::string& message)
+ObjParserInterface::error(const Kitsunemimi::Obj::location& location,
+                          const std::string& message)
 {
     // get the broken part of the parsed string
     const uint32_t errorStart = location.begin.column;

@@ -8,7 +8,7 @@
  */
 
 #include "objConverterTest.h"
-#include <libKitsuneObj.h>
+#include <obj_item.h>
 #include <jsonItems.hpp>
 
 ObjConverterTest::ObjConverterTest(): Kitsune::CommonTest("ObjConverterTest")

@@ -7,16 +7,15 @@
  *  MIT License
  */
 
-#ifndef JINJA2PARSERINTERFACE_HH
-#define JINJA2PARSERINTERFACE_HH
+#ifndef OBJPARSERINTERFACE_HH
+#define OBJPARSERINTERFACE_HH
 
 #include <vector>
 #include <string>
-#include <jsonItems.hpp>
 
 #include <iostream>
 
-namespace Kitsune
+namespace Kitsunemimi
 {
 namespace Obj
 {
@@ -38,7 +37,7 @@ public:
     Json::JsonObject *getOutput() const;
 
     // Error handling.
-    void error(const Kitsune::Obj::location &location,
+    void error(const Kitsunemimi::Obj::location &location,
                const std::string& message);
     std::string getErrorMessage() const;
 
@@ -51,6 +50,6 @@ private:
 };
 
 }  // namespace Obj
-}  // namespace Kitsune
+}  // namespace Kitsunemimi
 
-#endif // JINJA2PARSERINTERFACE_HH
+#endif // OBJPARSERINTERFACE_HH

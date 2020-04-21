@@ -7,7 +7,7 @@
  *  MIT License
  */
 
-#include "libKitsuneObj.h"
+#include "obj_item.h"
 
 #include <objConverter.h>
 

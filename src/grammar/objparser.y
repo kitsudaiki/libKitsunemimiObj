@@ -29,7 +29,7 @@
 #include <vector>
 #include <jsonObjects.h>
 
-namespace Kitsune
+namespace Kitsunemimi
 {
 namespace Obj
 {
@@ -42,16 +42,16 @@ using namespace Kitsune::Json;
 }
 
 // The parsing context.
-%param { Kitsune::Obj::ObjParserInterface& driver }
+%param { Kitsunemimi::Obj::ObjParserInterface& driver }
 
 %locations
 
 %code
 {
-#include <obj_parsing/objParserInterface.h>
+#include <obj_parsing/obj_parserInterface.h>
 # undef YY_DECL
 # define YY_DECL \
-    Kitsune::Obj::ObjParser::symbol_type objlex (Kitsune::Obj::ObjParserInterface& driver)
+    Kitsunemimi::Obj::ObjParser::symbol_type objlex (Kitsunemimi::Obj::ObjParserInterface& driver)
 YY_DECL;
 }
 

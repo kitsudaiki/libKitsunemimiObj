@@ -3,7 +3,7 @@
 # include <climits>
 # include <cstdlib>
 # include <string>
-# include <obj_parsing/objParserInterface.h>
+# include <obj_parsing/obj_parserInterface.h>
 # include <objparser.h>
 
 # undef yywrap
@@ -15,7 +15,7 @@
 # undef YY_DECL
 # endif
 # define YY_DECL \
-    Kitsune::Obj::ObjParser::symbol_type objlex (Kitsune::Obj::ObjParserInterface& driver)
+    Kitsunemimi::Obj::ObjParser::symbol_type objlex (Kitsunemimi::Obj::ObjParserInterface& driver)
 YY_DECL;
 Kitsune::Obj::location objloc;
 

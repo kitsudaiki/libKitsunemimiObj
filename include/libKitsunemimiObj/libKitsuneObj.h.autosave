@@ -25,6 +25,10 @@ class KitsuneObjConverter
 public:
     KitsuneObjConverter();
     ~KitsuneObjConverter();
+    
+    struct{
+        
+    }
 
     std::pair<Json::JsonItem *, bool> convert(const std::string &templateString);
 
