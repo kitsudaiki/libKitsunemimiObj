@@ -9,7 +9,11 @@
 
 #include <objConverterTest.h>
 
+#include <libKitsunemimiPersistence/logger/logger.h>
+
 int main()
 {
-    ObjConverterTest test1;
+    Kitsunemimi::Persistence::initConsoleLogger(true);
+
+    ObjParseTest test1;
 }

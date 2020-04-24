@@ -5,19 +5,21 @@ QT -= qt core gui
 CONFIG   -= app_bundle
 CONFIG += c++14 console
 
-LIBS += -L../../libKitsuneCommon/src -lKitsuneCommon
-LIBS += -L../../libKitsuneCommon/src/debug -lKitsuneCommon
-LIBS += -L../../libKitsuneCommon/src/release -lKitsuneCommon
-INCLUDEPATH += ../../libKitsuneCommon/include/libKitsuneCommon
+LIBS += -L../../libKitsunemimiCommon/src -lKitsunemimiCommon
+LIBS += -L../../libKitsunemimiCommon/src/debug -lKitsunemimiCommon
+LIBS += -L../../libKitsunemimiCommon/src/release -lKitsunemimiCommon
+INCLUDEPATH += ../../libKitsunemimiCommon/include
 
-LIBS += -L../../libKitsuneJson/src -lKitsuneJson
-LIBS += -L../../libKitsuneJson/src/debug -lKitsuneJson
-LIBS += -L../../libKitsuneJson/src/release -lKitsuneJson
-INCLUDEPATH += ../../libKitsuneJson/include/libKitsuneJson
+LIBS += -L../../libKitsunemimiPersistence/src -lKitsunemimiPersistence
+LIBS += -L../../libKitsunemimiPersistence/src/debug -lKitsunemimiPersistence
+LIBS += -L../../libKitsunemimiPersistence/src/release -lKitsunemimiPersistence
+INCLUDEPATH += ../../libKitsunemimiPersistence/include
+
+LIBS +=  -lboost_filesystem -lboost_system
 
 INCLUDEPATH += $$PWD
 
-LIBS += -L../src -lKitsuneObj
+LIBS += -L../src -lKitsunemimiObj
 
 SOURCES += \
         main.cpp \

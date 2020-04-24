@@ -7,45 +7,37 @@
  *  MIT License
  */
 
-#include "obj_item.h"
+#include <libKitsunemimiObj/obj_item.h>
+#include <obj_parser.h>
 
-#include <objConverter.h>
-
-namespace Kitsune
+namespace Kitsunemimi
 {
 namespace Obj
 {
 
 /**
- * constructor
+ * @brief objParse
+ * @param result
+ * @param input
+ * @return
  */
-KitsuneObjConverter::KitsuneObjConverter()
+bool
+objParse(obj_item &result, const std::string &input)
 {
-    m_converter = new ObjConverter();
+    ObjParser parser;
+    return parser.parse(result, input);
 }
 
 /**
- * destructor
+ * @brief objToString
+ * @param result
+ * @return
  */
-KitsuneObjConverter::~KitsuneObjConverter()
+const std::string
+objToString(obj_item &result)
 {
-    delete m_converter;
-}
 
-/**
- * Public convert-method for the external using. At first it parse the template-string
- * and then it merge the parsed information with the content of the json-input.
- *
- * @return Pair of string and boolean where the boolean shows
- *         if the parsing and converting were successful
- *         and the string contains the output-string, if the search was successful
- *         else the string contains the error-message
- */
-std::pair<Json::JsonItem*, bool>
-KitsuneObjConverter::convert(const std::string &templateString)
-{
-    return m_converter->convert(templateString);
 }
 
 }  // namespace Obj
-}  // namespace Kitsune
+}  // namespace Kitsunemimi

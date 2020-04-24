@@ -10,27 +10,19 @@
 #ifndef OBJCONVERTERTEST_H
 #define OBJCONVERTERTEST_H
 
-#include <testing/commonTest.hpp>
+#include <libKitsunemimiCommon/test_helper/compare_test_helper.h>
 #include <utility>
 #include <string>
 #include <vector>
 
-namespace Kitsune
-{
-namespace Obj
-{
-class KitsuneObjConverter;
-}
-}
-
-class ObjConverterTest: public Kitsune::CommonTest
+class ObjParseTest
+        : public Kitsunemimi::CompareTestHelper
 {
 
 public:
-    ObjConverterTest();
+    ObjParseTest();
 
 private:
-    Kitsune::Obj::KitsuneObjConverter* m_converter = nullptr;
     std::string m_testObjString;
 
     void initTestCase();

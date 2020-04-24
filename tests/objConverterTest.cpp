@@ -8,10 +8,10 @@
  */
 
 #include "objConverterTest.h"
-#include <obj_item.h>
-#include <jsonItems.hpp>
+#include <libKitsunemimiObj/obj_item.h>
 
-ObjConverterTest::ObjConverterTest(): Kitsune::CommonTest("ObjConverterTest")
+ObjParseTest::ObjParseTest()
+    : Kitsunemimi::CompareTestHelper("ObjParseTest")
 {
     initTestCase();
 
@@ -20,43 +20,48 @@ ObjConverterTest::ObjConverterTest(): Kitsune::CommonTest("ObjConverterTest")
     cleanupTestCase();
 }
 
-void ObjConverterTest::initTestCase()
+void ObjParseTest::initTestCase()
 {
-    m_converter = new Kitsune::Obj::KitsuneObjConverter();
-
-    m_testObjString = std::string("v 2.000000 -1.000000 -1.000000"
-                                  "v 1.000000 -1.000000 1.000000"
-                                  "v -1.000000 -1.000000 1.000000"
-                                  "v -1.000000 -1.000000 -1.000000"
-                                  "v 1.000000 1.000000 -0.999999"
-                                  "v 0.999999 1.000000 1.000001"
-                                  "v -1.000000 1.000000 1.000000"
-                                  "v -1.000000 1.000000 -1.000000"
-                                  "vn 0.0000 -1.0000 0.0000"
-                                  "vn 0.0000 1.0000 0.0000"
-                                  "vn 1.0000 0.0000 0.0000"
-                                  "vn -0.0000 -0.0000 1.0000"
-                                  "vn -1.0000 -0.0000 -0.0000"
-                                  "vn 0.0000 0.0000 -1.0000"
-                                  "f 1//1 2//1 3//1 4//1"
-                                  "f 5//2 8//2 7//2 6//2"
-                                  "f 1//3 5//3 6//3 2//3"
-                                  "f 2//4 6//4 7//4 3//4"
-                                  "f 3//5 7//5 8//5 4//5"
-                                  "f 5//6 1//6 4//6 8//6");
+    m_testObjString = std::string("v 2.000000 -1.000000 -1.000000\n"
+                                  "v 1.000000 -1.000000 1.000000\n"
+                                  "v -1.000000    -1.000000 1.000000\n"
+                                  "v -1.000000 -1.000000 -1.000000\n"
+                                  "v     1.000000 1.000000 -0.999999\n"
+                                  "v 0.999999 1.000000 1.000001\n"
+                                  "v -1.000000 1.000000 1.000000\n"
+                                  "v -1.000000    1.000000 -1.000000\n"
+                                  "\n"
+                                  "vn 0.0000 -1.0000 0.0000\n"
+                                  "vn \t    0.0000 1.0000 0.0000\n"
+                                  "vn 1.0000 0.0000 0.0000\n"
+                                  "vn -0.0000 -0.0000 1.0000\n"
+                                  "vn -1.0000 -0.0000 -0.0000\n"
+                                  "vn 0.0000 0.0000 -1.0000\n"
+                                  "\n"
+                                  "f  \t  1//1 2//1 3//1 4//1\n"
+                                  "f 5//2 8//2   7//2 6//2\n"
+                                  "f 1//3 5//3 6//3 2//3\n"
+                                  "f 2//4 6//4 7//4 3//4\n"
+                                  "f 3//5 7//5 8//5 4//5\n"
+                                  "f 5//6   1//6 4//6 8//6\n");
 }
 
-void ObjConverterTest::testInput()
+void ObjParseTest::testInput()
 {
-    std::pair<Kitsune::Json::JsonItem*, bool> result = m_converter->convert(m_testObjString);
+    Kitsunemimi::Obj::obj_item restult;
+    bool ret = Kitsunemimi::Obj::objParse(restult, m_testObjString);
+    TEST_EQUAL(ret, true);
 
-    UNITTEST(result.second, true);
-    Kitsune::Json::JsonObject* obj = dynamic_cast<Kitsune::Json::JsonObject*>(result.first);
-    UNITTEST(obj->get("v")->get(0)->get(0)->toValue()->toFloat(), 2.0f);
-    UNITTEST(obj->get("v")->get(0)->get(1)->toValue()->toFloat(), -1.0f);
+    TEST_EQUAL(restult.vertizes.at(0).x, 2.0f);
+    TEST_EQUAL(restult.vertizes.at(6).y, 1.0f);
+
+    TEST_EQUAL(restult.normals.at(1).y, 1.0f);
+    TEST_EQUAL(restult.normals.at(4).x, -1.0f);
+
+    TEST_EQUAL(restult.faces.at(0).at(0).id1, 1);
+    TEST_EQUAL(restult.faces.at(1).at(1).id3, 2);
 }
 
-void ObjConverterTest::cleanupTestCase()
+void ObjParseTest::cleanupTestCase()
 {
-    delete m_converter;
 }
