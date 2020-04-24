@@ -1,3 +1,11 @@
+/**
+ *  @file       obj_parser.h
+ *
+ *  @author     Tobias Anker <tobias.anker@kitsunemimi.moe>
+ *
+ *  @copyright  MIT License
+ */
+
 #include "obj_parser.h"
 
 #include <libKitsunemimiCommon/common_methods/string_methods.h>

@@ -1,10 +1,9 @@
 /**
- *  @file    main.cpp
+ *  @file       main.cpp
  *
- *  @author  Tobias Anker
- *  Contact: tobias.anker@kitsunemimi.moe
+ *  @author     Tobias Anker <tobias.anker@kitsunemimi.moe>
  *
- *  MIT License
+ *  @copyright  MIT License
  */
 
 #include <obj_parser_test.h>

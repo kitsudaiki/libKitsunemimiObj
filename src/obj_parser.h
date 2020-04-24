@@ -1,3 +1,11 @@
+/**
+ *  @file       obj_parser.cpp
+ *
+ *  @author     Tobias Anker <tobias.anker@kitsunemimi.moe>
+ *
+ *  @copyright  MIT License
+ */
+
 #ifndef OBJ_PARSER_H
 #define OBJ_PARSER_H
 

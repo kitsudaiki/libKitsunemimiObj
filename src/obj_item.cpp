@@ -1,10 +1,9 @@
 /**
- *  @file    libKitsuneObj.cpp
+ *  @file       obj_item.h
  *
- *  @author  Tobias Anker
- *  Contact: tobias.anker@kitsunemimi.moe
+ *  @author     Tobias Anker <tobias.anker@kitsunemimi.moe>
  *
- *  MIT License
+ *  @copyright  MIT License
  */
 
 #include <libKitsunemimiObj/obj_item.h>
