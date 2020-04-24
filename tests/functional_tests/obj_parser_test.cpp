@@ -22,8 +22,8 @@ ObjParser_Test::ObjParser_Test()
 void
 ObjParser_Test::parse_test()
 {
-    Kitsunemimi::Obj::obj_item restult;
-    bool ret = Kitsunemimi::Obj::objParse(restult, getTestString());
+    Kitsunemimi::Obj::ObjItem restult;
+    bool ret = Kitsunemimi::Obj::parseString(restult, getTestString());
     TEST_EQUAL(ret, true);
 
     TEST_EQUAL(restult.vertizes.at(0).x, 2.0f);

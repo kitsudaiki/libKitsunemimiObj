@@ -11,60 +11,70 @@ namespace Obj
 {
 
 /**
- * @brief ObjParser::ObjParser
+ * @brief default-constructor
  */
 ObjParser::ObjParser() {}
 
 /**
- * @brief ObjParser::parse
- * @param result
- * @param inputString
- * @return
+ * @brief parse an obj-formated string
+ *
+ * @param result empty obj-item for the parsed information
+ * @param input input-string, which should be parsed
+ *
+ * @return true, if successful, else false
  */
 bool
-ObjParser::parse(obj_item &result,
+ObjParser::parse(ObjItem &result,
                  const std::string &inputString)
 {
+    // copy and prepare input string
     std::string preparedString = inputString;
-
     Kitsunemimi::replaceSubstring(preparedString, "\t", " ");
 
+    // split string into the single lines
     std::vector<std::string> splittedContent;
     Kitsunemimi::splitStringByDelimiter(splittedContent, preparedString, '\n');
 
+    // iterate of the lines of the input
     for(uint64_t i = 0; i < splittedContent.size(); i++)
     {
+        // skip empty lines
         if(splittedContent.at(i).size() == 0) {
             continue;
         }
 
+        // split line into the single parts
         std::vector<std::string> splittedLine;
         Kitsunemimi::splitStringByDelimiter(splittedLine, splittedContent.at(i), ' ');
         Kitsunemimi::removeEmptyStrings(&splittedLine);
 
         bool state = false;
 
+        // handle vertex
         if(splittedLine.at(0) == "v")
         {
-            vec4 vertex;
-            state = parseVector(vertex, splittedLine);
+            Vec4 vertex;
+            state = parseVertex(vertex, splittedLine);
             result.vertizes.push_back(vertex);
         }
 
+        // handle vertex-normale
         if(splittedLine.at(0) == "vn")
         {
-            vec4 normale;
-            state = parseVector(normale, splittedLine);
+            Vec4 normale;
+            state = parseVertex(normale, splittedLine);
             result.normals.push_back(normale);
         }
 
+        // handle face
         if(splittedLine.at(0) == "f")
         {
-            std::vector<index> indizes;
+            std::vector<Index> indizes;
             state = parseIndexList(indizes, splittedLine);
             result.faces.push_back(indizes);
         }
 
+        // check result
         if(state == false)
         {
             LOG_ERROR("ERROR while parsing obj-file content in line " + std::to_string(i));
@@ -76,63 +86,63 @@ ObjParser::parse(obj_item &result,
 }
 
 /**
- * @brief ObjParser::parseVector
- * @param result
- * @param lineContent
- * @return
+ * @brief parse coordinate
+ *
+ * @param result reference to the vec4-variable, where the converted value should be written into
+ * @param lineContent splitted content of the line
+ *
+ * @return true, if successful, else false
  */
 bool
-ObjParser::parseVector(vec4 &result,
+ObjParser::parseVertex(Vec4 &result,
                        const std::vector<std::string> &lineContent)
 {
+    // precheck
     if(lineContent.size() < 4) {
         return false;
     }
 
-    bool ret = false;
+    bool ret = true;
 
-    ret = parseFloat(result.x, lineContent.at(1));
-    if(ret == false) {
-        return false;
-    }
+    // parse coordinates
+    ret = ret && parseFloat(result.x, lineContent.at(1));
+    ret = ret && parseFloat(result.y, lineContent.at(2));
+    ret = ret && parseFloat(result.z, lineContent.at(3));
 
-    ret = parseFloat(result.y, lineContent.at(2));
-    if(ret == false) {
-        return false;
-    }
-
-    ret = parseFloat(result.z, lineContent.at(3));
-    if(ret == false) {
-        return false;
-    }
-
-    return true;
+    return ret;
 }
 
 /**
- * @brief ObjParser::parseIndexList
- * @param result
- * @param lineContent
- * @return
+ * @brief parse list of indizes
+ *
+ * @param result reference to the index-list, where the converted value should be written into
+ * @param lineContent splitted content of the line
+ *
+ * @return true, if successful, else false
  */
 bool
-ObjParser::parseIndexList(std::vector<index> &result,
-                     const std::vector<std::string> &lineContent)
+ObjParser::parseIndexList(std::vector<Index> &result,
+                          const std::vector<std::string> &lineContent)
 {
+    // precheck
     if(lineContent.size() < 4) {
         return false;
     }
 
+    // iterate over the line
     for(uint32_t i = 1; i < lineContent.size(); i++)
     {
+        // split index-entry into its parts
         std::vector<std::string> indexList;
         Kitsunemimi::splitStringByDelimiter(indexList, lineContent.at(i), '/');
 
-        index newIndex;
+        // converts the parts into an index-item
+        Index newIndex;
         bool ret = parseIndex(newIndex, indexList);
         if(ret == false) {
             return false;
         }
+
         result.push_back(newIndex);
     }
 
@@ -140,56 +150,53 @@ ObjParser::parseIndexList(std::vector<index> &result,
 }
 
 /**
- * @brief ObjParser::parseIndex
- * @param result
- * @param indexContent
- * @return
+ * @brief converts the parts into an index-item
+ *
+ * @param result reference to the index-variable, where the converted value should be written into
+ * @param indexContent string-list with the single parts of the index
+ *
+ * @return true, if successful, else false
  */
 bool
-ObjParser::parseIndex(index &result,
+ObjParser::parseIndex(Index &result,
                       const std::vector<std::string> &indexContent)
 {
+    bool ret = true;
+
+    // convert index-value number 1
     if(indexContent.size() > 0)
     {
-        if(indexContent.at(0).size() > 0)
-        {
-            bool ret = parseInt(result.id1, indexContent.at(0));
-            if(ret == false) {
-                return false;
-            }
+        if(indexContent.at(0).size() > 0) {
+            ret = ret && parseInt(result.id1, indexContent.at(0));
         }
     }
 
+    // convert index-value number 2
     if(indexContent.size() > 1)
     {
-        if(indexContent.at(1).size() > 0)
-        {
-            bool ret = parseInt(result.id2, indexContent.at(1));
-            if(ret == false) {
-                return false;
-            }
+        if(indexContent.at(1).size() > 0) {
+            ret = ret && parseInt(result.id2, indexContent.at(1));
         }
     }
 
+    // convert index-value number 3
     if(indexContent.size() > 2)
     {
-        if(indexContent.at(2).size() > 0)
-        {
-            bool ret = parseInt(result.id3, indexContent.at(2));
-            if(ret == false) {
-                return false;
-            }
+        if(indexContent.at(2).size() > 0) {
+            ret = ret && parseInt(result.id3, indexContent.at(2));
         }
     }
 
-    return true;
+    return ret;
 }
 
 /**
- * @brief ObjParser::parseFloat
- * @param result
- * @param input
- * @return
+ * @brief convert a string into a float-value
+ *
+ * @param result reference to the float-variable, where the converted value should be written into
+ * @param input input-string to parse
+ *
+ * @return true, if successful, else false
  */
 bool
 ObjParser::parseFloat(float &result,
@@ -197,19 +204,16 @@ ObjParser::parseFloat(float &result,
 {
     char* err = nullptr;
     result = std::strtof(input.c_str(), &err);
-
-    if(std::string(err).size() != 0) {
-        return false;
-    }
-
-    return true;
+    return std::string(err).size() == 0;
 }
 
 /**
- * @brief ObjParser::parseInt
- * @param result
- * @param input
- * @return
+ * @brief convert a string into an int-value
+ *
+ * @param result reference to the int-variable, where the converted value should be written into
+ * @param input input-string to parse
+ *
+ * @return true, if successful, else false
  */
 bool
 ObjParser::parseInt(int &result,
@@ -217,12 +221,7 @@ ObjParser::parseInt(int &result,
 {
     char* err = nullptr;
     result = static_cast<int32_t>(std::strtol(input.c_str(), &err, 10));
-
-    if(std::string(err).size() != 0) {
-        return false;
-    }
-
-    return true;
+    return std::string(err).size() == 0;
 }
 
 }

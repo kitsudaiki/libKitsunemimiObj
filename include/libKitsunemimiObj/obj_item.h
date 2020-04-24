@@ -18,7 +18,7 @@ namespace Kitsunemimi
 namespace Obj
 {
 
-struct vec4
+struct Vec4
 {
     float x = 0.0f;
     float y = 0.0f;
@@ -26,27 +26,27 @@ struct vec4
     float w = 0.0f;
 };
 
-struct index
+struct Index
 {
     int32_t id1 = -1;
     int32_t id2 = -1;
     int32_t id3 = -1;
 };
 
-struct obj_item
+struct ObjItem
 {
-    std::vector<vec4> vertizes;
-    std::vector<vec4> normals;
-    std::vector<vec4> textures;
-    std::vector<std::vector<index>> points;
-    std::vector<std::vector<index>> lines;
-    std::vector<std::vector<index>> faces;
+    std::vector<Vec4> vertizes;
+    std::vector<Vec4> normals;
+    std::vector<Vec4> textures;
+    std::vector<std::vector<Index>> points;
+    std::vector<std::vector<Index>> lines;
+    std::vector<std::vector<Index>> faces;
 
-    obj_item() {}
+    ObjItem() {}
 };
 
-bool objParse(obj_item &result, const std::string &input);
-const std::string objToString(obj_item &result);
+bool parseString(ObjItem &result, const std::string &input);
+const std::string convertToString(ObjItem &result);
 
 }  // namespace Obj
 }  // namespace Kitsunemimi

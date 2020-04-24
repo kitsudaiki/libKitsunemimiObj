@@ -16,13 +16,16 @@ namespace Obj
 {
 
 /**
- * @brief objParse
- * @param result
- * @param input
- * @return
+ * @brief parse an obj-string
+ *
+ * @param result empty obj-item for the parsed information
+ * @param input input-string, which should be parsed
+ *
+ * @return true, if successful, else false
  */
 bool
-objParse(obj_item &result, const std::string &input)
+parseString(ObjItem &result,
+            const std::string &input)
 {
     ObjParser parser;
     return parser.parse(result, input);
@@ -34,7 +37,7 @@ objParse(obj_item &result, const std::string &input)
  * @return
  */
 const std::string
-objToString(obj_item &result)
+convertToString(ObjItem &result)
 {
 
 }

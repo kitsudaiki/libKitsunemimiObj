@@ -13,18 +13,18 @@ class ObjParser
 public:
     ObjParser();
 
-    bool parse(obj_item &result,
+    bool parse(ObjItem &result,
                const std::string &inputString);
 
 private:
-    bool parseIndizes(obj_item &result,
+    bool parseIndizes(ObjItem &result,
                       const std::string &inputString);
 
-    bool parseVector(vec4 &result,
+    bool parseVertex(Vec4 &result,
                      const std::vector<std::string> &lineContent);
-    bool parseIndexList(std::vector<index> &result,
+    bool parseIndexList(std::vector<Index> &result,
                         const std::vector<std::string> &lineContent);
-    bool parseIndex(index &result,
+    bool parseIndex(Index &result,
                     const std::vector<std::string> &indexContent);
 
     bool parseFloat(float &result,
