@@ -1,5 +1,5 @@
 /**
- *  @file    objConverterTest.h
+ *  @file    obj_parser_test.h
  *
  *  @author  Tobias Anker
  *  Contact: tobias.anker@kitsunemimi.moe
@@ -7,29 +7,25 @@
  *  MIT License
  */
 
-#ifndef OBJCONVERTERTEST_H
-#define OBJCONVERTERTEST_H
+#ifndef OBJPARSER_TEST_H
+#define OBJPARSER_TEST_H
 
 #include <libKitsunemimiCommon/test_helper/compare_test_helper.h>
 #include <utility>
 #include <string>
 #include <vector>
 
-class ObjParseTest
+class ObjParser_Test
         : public Kitsunemimi::CompareTestHelper
 {
 
 public:
-    ObjParseTest();
+    ObjParser_Test();
 
 private:
-    std::string m_testObjString;
+    void parse_test();
 
-    void initTestCase();
-
-    void testInput();
-
-    void cleanupTestCase();
+    const std::string getTestString();
 };
 
-#endif // OBJCONVERTERTEST_H
+#endif // OBJPARSER_TEST_H

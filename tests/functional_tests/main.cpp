@@ -7,7 +7,7 @@
  *  MIT License
  */
 
-#include <objConverterTest.h>
+#include <obj_parser_test.h>
 
 #include <libKitsunemimiPersistence/logger/logger.h>
 
@@ -15,5 +15,5 @@ int main()
 {
     Kitsunemimi::Persistence::initConsoleLogger(true);
 
-    ObjParseTest test1;
+    ObjParser_Test test1;
 }
