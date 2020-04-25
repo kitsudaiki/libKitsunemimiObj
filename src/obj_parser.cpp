@@ -171,27 +171,27 @@ ObjParser::parseIndex(Index &result,
 {
     bool ret = true;
 
-    // convert index-value number 1
+    // convert v
     if(indexContent.size() > 0)
     {
         if(indexContent.at(0).size() > 0) {
-            ret = ret && parseInt(result.id1, indexContent.at(0));
+            ret = ret && parseInt(result.v, indexContent.at(0));
         }
     }
 
-    // convert index-value number 2
+    // convert vt
     if(indexContent.size() > 1)
     {
         if(indexContent.at(1).size() > 0) {
-            ret = ret && parseInt(result.id2, indexContent.at(1));
+            ret = ret && parseInt(result.vt, indexContent.at(1));
         }
     }
 
-    // convert index-value number 3
+    // convert vn
     if(indexContent.size() > 2)
     {
         if(indexContent.at(2).size() > 0) {
-            ret = ret && parseInt(result.id3, indexContent.at(2));
+            ret = ret && parseInt(result.vn, indexContent.at(2));
         }
     }
 

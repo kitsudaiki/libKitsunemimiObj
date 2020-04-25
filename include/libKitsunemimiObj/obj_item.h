@@ -27,9 +27,9 @@ struct Vec4
 
 struct Index
 {
-    int32_t id1 = -1;
-    int32_t id2 = -1;
-    int32_t id3 = -1;
+    int32_t v = -1;
+    int32_t vt = -1;
+    int32_t vn = -1;
 };
 
 struct ObjItem
@@ -45,7 +45,7 @@ struct ObjItem
 };
 
 bool parseString(ObjItem &result, const std::string &input);
-const std::string convertToString(ObjItem &result);
+const std::string convertToString(ObjItem &input);
 
 }  // namespace Obj
 }  // namespace Kitsunemimi

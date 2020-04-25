@@ -7,7 +7,9 @@
  */
 
 #include <libKitsunemimiObj/obj_item.h>
+
 #include <obj_parser.h>
+#include <obj_creator.h>
 
 namespace Kitsunemimi
 {
@@ -31,14 +33,17 @@ parseString(ObjItem &result,
 }
 
 /**
- * @brief objToString
- * @param result
- * @return
+ * @brief converts an obj-item into a string
+ *
+ * @param input obj-item, which should be converted
+ *
+ * @return resulting string
  */
 const std::string
-convertToString(ObjItem &result)
+convertToString(ObjItem &input)
 {
-
+    ObjCreator creator;
+    return creator.create(input);
 }
 
 }  // namespace Obj

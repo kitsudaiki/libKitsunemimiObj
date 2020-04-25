@@ -31,8 +31,8 @@ ObjParser_Test::parse_test()
     TEST_EQUAL(restult.normals.at(1).y, 1.0f);
     TEST_EQUAL(restult.normals.at(4).x, -1.0f);
 
-    TEST_EQUAL(restult.faces.at(0).at(0).id1, 1);
-    TEST_EQUAL(restult.faces.at(1).at(1).id3, 2);
+    TEST_EQUAL(restult.faces.at(0).at(0).v, 1);
+    TEST_EQUAL(restult.faces.at(1).at(1).vn, 2);
 }
 
 /**
