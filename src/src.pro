@@ -22,8 +22,10 @@ INCLUDEPATH += $$PWD \
 
 SOURCES += \
     obj_item.cpp \
-    obj_parser.cpp
+    obj_parser.cpp \
+    obj_creator.cpp
 
 HEADERS += \
     ../include/libKitsunemimiObj/obj_item.h \
-    obj_parser.h
+    obj_parser.h \
+    obj_creator.h
