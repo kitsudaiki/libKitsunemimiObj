@@ -30,6 +30,8 @@ private:
 
     bool parseVertex(Vec4 &result,
                      const std::vector<std::string> &lineContent);
+    bool parseValueList(std::vector<uint32_t> &result,
+                        const std::vector<std::string> &lineContent);
     bool parseIndexList(std::vector<Index> &result,
                         const std::vector<std::string> &lineContent);
     bool parseIndex(Index &result,
