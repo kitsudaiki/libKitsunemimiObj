@@ -131,7 +131,7 @@ ObjParser::parseVertex(Vec4 &result,
                        const std::vector<std::string> &lineContent)
 {
     // precheck
-    if(lineContent.size() < 4) {
+    if(lineContent.size() < 3) {
         return false;
     }
 
@@ -140,7 +140,9 @@ ObjParser::parseVertex(Vec4 &result,
     // parse coordinates
     ret = ret && parseFloat(result.x, lineContent.at(1));
     ret = ret && parseFloat(result.y, lineContent.at(2));
-    ret = ret && parseFloat(result.z, lineContent.at(3));
+    if(lineContent.size() > 3) {
+        ret = ret && parseFloat(result.z, lineContent.at(3));
+    }
 
     return ret;
 }
