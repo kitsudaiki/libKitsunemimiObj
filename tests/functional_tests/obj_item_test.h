@@ -14,17 +14,19 @@
 #include <string>
 #include <vector>
 
-class ObjParser_Test
+class ObjItem_Test
         : public Kitsunemimi::CompareTestHelper
 {
 
 public:
-    ObjParser_Test();
+    ObjItem_Test();
 
 private:
     void parse_test();
+    void converter_test();
 
     const std::string getTestString();
+    const std::string getCompareString();
 };
 
 #endif // OBJPARSER_TEST_H

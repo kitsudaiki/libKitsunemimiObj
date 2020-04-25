@@ -23,7 +23,7 @@ LIBS += -L../../src -lKitsunemimiObj
 
 SOURCES += \
         main.cpp \
-    obj_parser_test.cpp
+    obj_item_test.cpp
 
 HEADERS += \
-    obj_parser_test.h
+    obj_item_test.h

@@ -51,27 +51,28 @@ ObjCreator::create(const ObjItem &input)
     // convert faces
     for(uint32_t i = 0; i < input.faces.size(); i++)
     {
-        result += "f ";
+        result += "f";
         for(uint32_t j = 0; j < input.faces.at(i).size(); j++)
         {
             // v
-            int32_t v = input.faces.at(i).at(j).v;
-            result += std::to_string(v) + "/";
+            const int32_t v = input.faces.at(i).at(j).v;
+            result += " " + std::to_string(v) + "/";
 
             // vt
-            int32_t vt = input.faces.at(i).at(j).vt;
+            const int32_t vt = input.faces.at(i).at(j).vt;
             if(vt > 0) {
-                result += std::to_string(vt) + " ";
+                result += std::to_string(vt);
             }
 
             // vn
-            int32_t vn = input.faces.at(i).at(j).vn;
+            const int32_t vn = input.faces.at(i).at(j).vn;
             if(vn > 0)
             {
                 result += "/";
-                result += std::to_string(vn) + " ";
+                result += std::to_string(vn);
             }
         }
+        result += "\n";
     }
 
     return result;
