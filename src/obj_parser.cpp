@@ -91,6 +91,14 @@ ObjParser::parse(ObjItem &result,
             result.points.push_back(static_cast<uint32_t>(value));
         }
 
+        // handle line
+        if(splittedLine.at(0) == "l")
+        {
+            std::vector<uint32_t> indizes;
+            state = parseValueList(indizes, splittedLine);
+            result.lines.push_back(indizes);
+        }
+
         // handle face
         if(splittedLine.at(0) == "f")
         {
@@ -135,6 +143,39 @@ ObjParser::parseVertex(Vec4 &result,
     ret = ret && parseFloat(result.z, lineContent.at(3));
 
     return ret;
+}
+
+/**
+ * @brief parse list of values
+ *
+ * @param result reference to the value-list, where the converted value should be written into
+ * @param lineContent splitted content of the line
+ *
+ * @return true, if successful, else false
+ */
+bool
+ObjParser::parseValueList(std::vector<uint32_t> &result,
+                          const std::vector<std::string> &lineContent)
+{
+    // precheck
+    if(lineContent.size() < 4) {
+        return false;
+    }
+
+    // iterate over the line
+    for(uint32_t i = 1; i < lineContent.size(); i++)
+    {
+        // converts the parts into an index-item
+        int32_t newIndex;
+        bool ret = parseInt(newIndex, lineContent.at(i));
+        if(ret == false) {
+            return false;
+        }
+
+        result.push_back(static_cast<uint32_t>(newIndex));
+    }
+
+    return true;
 }
 
 /**
