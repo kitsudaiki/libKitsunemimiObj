@@ -47,6 +47,7 @@ ObjItem_Test::converter_test()
     TEST_EQUAL(ret, true);
 
     const std::string convertedString =  Kitsunemimi::Obj::convertToString(result);
+    //std::cout<<convertedString<<std::endl;
     TEST_EQUAL(convertedString, getCompareString());
 }
 
@@ -57,7 +58,7 @@ ObjItem_Test::converter_test()
 const std::string
 ObjItem_Test::getTestString()
 {
-    return std::string("v 2.000000 -1.000000 -1.000000\n"
+    return std::string("v 1.000000 -1.000000 -1.000000\n"
                        "v 1.000000 -1.000000 1.000000\n"
                        "v -1.000000    -1.000000 1.000000\n"
                        "v -1.000000 -1.000000 -1.000000\n"
@@ -88,7 +89,7 @@ ObjItem_Test::getTestString()
 const std::string
 ObjItem_Test::getCompareString()
 {
-    return std::string("v 2.000000 -1.000000 -1.000000\n"
+    return std::string("v 1.000000 -1.000000 -1.000000\n"
                        "v 1.000000 -1.000000 1.000000\n"
                        "v -1.000000 -1.000000 1.000000\n"
                        "v -1.000000 -1.000000 -1.000000\n"
