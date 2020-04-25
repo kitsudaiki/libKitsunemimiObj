@@ -66,7 +66,15 @@ ObjParser::parse(ObjItem &result,
             result.vertizes.push_back(vertex);
         }
 
-        // handle vertex-normale
+        // handle textures
+        if(splittedLine.at(0) == "vt")
+        {
+            Vec4 texture;
+            state = parseVertex(texture, splittedLine);
+            result.normals.push_back(texture);
+        }
+
+        // handle normals
         if(splittedLine.at(0) == "vn")
         {
             Vec4 normale;
