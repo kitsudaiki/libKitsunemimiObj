@@ -37,8 +37,8 @@ struct ObjItem
     std::vector<Vec4> vertizes;
     std::vector<Vec4> normals;
     std::vector<Vec4> textures;
-    std::vector<std::vector<Index>> points;
-    std::vector<std::vector<Index>> lines;
+    std::vector<uint32_t> points;
+    std::vector<std::vector<uint32_t>> lines;
     std::vector<std::vector<Index>> faces;
 
     ObjItem() {}

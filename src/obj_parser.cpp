@@ -71,7 +71,7 @@ ObjParser::parse(ObjItem &result,
         {
             Vec4 texture;
             state = parseVertex(texture, splittedLine);
-            result.normals.push_back(texture);
+            result.textures.push_back(texture);
         }
 
         // handle normals
@@ -80,6 +80,15 @@ ObjParser::parse(ObjItem &result,
             Vec4 normale;
             state = parseVertex(normale, splittedLine);
             result.normals.push_back(normale);
+        }
+
+        // handle point
+        if(splittedLine.at(0) == "p")
+        {
+            int32_t value = 0;
+            state = parseInt(value, splittedLine.at(1));
+            state = state && value > 0;
+            result.points.push_back(static_cast<uint32_t>(value));
         }
 
         // handle face
