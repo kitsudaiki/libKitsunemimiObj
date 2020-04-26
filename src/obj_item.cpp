@@ -35,15 +35,18 @@ parseString(ObjItem &result,
 /**
  * @brief converts an obj-item into a string
  *
+ * @param convertedString reference to the resulting string
  * @param input obj-item, which should be converted
  *
  * @return resulting string
  */
-const std::string
-convertToString(ObjItem &input)
+
+bool
+convertToString(std::string &convertedString,
+                const ObjItem &input)
 {
     ObjCreator creator;
-    return creator.create(input);
+    return creator.create(convertedString, input);
 }
 
 }  // namespace Obj

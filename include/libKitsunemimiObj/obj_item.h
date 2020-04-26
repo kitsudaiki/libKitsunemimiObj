@@ -45,7 +45,7 @@ struct ObjItem
 };
 
 bool parseString(ObjItem &result, const std::string &input);
-const std::string convertToString(ObjItem &input);
+bool convertToString(std::string &convertedString, const ObjItem &input);
 
 }  // namespace Obj
 }  // namespace Kitsunemimi
