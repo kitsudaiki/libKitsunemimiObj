@@ -21,7 +21,8 @@ class ObjCreator
 public:
     ObjCreator();
 
-    const std::string create(const ObjItem &input);
+    bool create(std::string &convertedString,
+                const ObjItem &input);
 };
 
 }

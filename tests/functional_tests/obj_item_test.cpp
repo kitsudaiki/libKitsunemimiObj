@@ -46,7 +46,8 @@ ObjItem_Test::converter_test()
     bool ret = Kitsunemimi::Obj::parseString(result, getTestString());
     TEST_EQUAL(ret, true);
 
-    const std::string convertedString =  Kitsunemimi::Obj::convertToString(result);
+    std::string convertedString = "";
+    ret = Kitsunemimi::Obj::convertToString(convertedString, result);
     //std::cout<<convertedString<<std::endl;
     TEST_EQUAL(convertedString, getCompareString());
 }
