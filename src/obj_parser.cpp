@@ -54,7 +54,7 @@ ObjParser::parse(ObjItem &result,
         // split line into the single parts
         std::vector<std::string> splittedLine;
         Kitsunemimi::splitStringByDelimiter(splittedLine, splittedContent.at(i), ' ');
-        Kitsunemimi::removeEmptyStrings(&splittedLine);
+        Kitsunemimi::removeEmptyStrings(splittedLine);
 
         bool state = false;
 
