@@ -1,0 +1,19 @@
+# Changelog
+
+
+## [0.1.1] - 2020-09-01
+- update requirements
+
+
+## [0.1.0] - 2020-04-26
+
+### Added
+- initial version to parse and generate obj-files
+- support for:
+    - vertex v
+    - normals vn
+    - textures vt
+    - points p
+    - lines l
+    - faces f
+
