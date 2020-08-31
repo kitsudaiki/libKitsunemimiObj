@@ -5,6 +5,9 @@ QT -= qt core gui
 CONFIG   -= app_bundle
 CONFIG += c++14 console
 
+LIBS += -L../../src -lKitsunemimiObj
+INCLUDEPATH += $$PWD
+
 LIBS += -L../../../libKitsunemimiCommon/src -lKitsunemimiCommon
 LIBS += -L../../../libKitsunemimiCommon/src/debug -lKitsunemimiCommon
 LIBS += -L../../../libKitsunemimiCommon/src/release -lKitsunemimiCommon
@@ -16,10 +19,6 @@ LIBS += -L../../../libKitsunemimiPersistence/src/release -lKitsunemimiPersistenc
 INCLUDEPATH += ../../../libKitsunemimiPersistence/include
 
 LIBS +=  -lboost_filesystem -lboost_system
-
-INCLUDEPATH += $$PWD
-
-LIBS += -L../../src -lKitsunemimiObj
 
 SOURCES += \
         main.cpp \
