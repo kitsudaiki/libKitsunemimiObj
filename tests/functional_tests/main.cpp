@@ -8,11 +8,11 @@
 
 #include <obj_item_test.h>
 
-#include <libKitsunemimiPersistence/logger/logger.h>
+#include <libKitsunemimiCommon/logger.h>
 
 int main()
 {
-    Kitsunemimi::Persistence::initConsoleLogger(true);
+    Kitsunemimi::initConsoleLogger(true);
 
     ObjItem_Test test1;
 }
