@@ -109,7 +109,10 @@ ObjParser::parse(ObjItem &result,
         // check result
         if(state == false)
         {
-            LOG_ERROR("ERROR while parsing obj-file content in line " + std::to_string(i));
+            ErrorContainer error;
+            error.errorMessage = "ERROR while parsing obj-file content in line "
+                                 + std::to_string(i);
+            LOG_ERROR(error);
             return false;
         }
     }
