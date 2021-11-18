@@ -12,6 +12,8 @@
 #include <vector>
 #include <string>
 
+#include <libKitsunemimiCommon/logger.h>
+
 namespace Kitsunemimi
 {
 namespace Obj
@@ -44,7 +46,9 @@ struct ObjItem
     ObjItem() {}
 };
 
-bool parseString(ObjItem &result, const std::string &input);
+bool parseString(ObjItem &result,
+                 const std::string &input,
+                 ErrorContainer &error);
 bool convertToString(std::string &convertedString, const ObjItem &input);
 
 }  // namespace Obj

@@ -27,12 +27,14 @@ ObjParser::ObjParser() {}
  *
  * @param result empty obj-item for the parsed information
  * @param input input-string, which should be parsed
+ * @param error reference for error-output
  *
  * @return true, if successful, else false
  */
 bool
 ObjParser::parse(ObjItem &result,
-                 const std::string &inputString)
+                 const std::string &inputString,
+                 ErrorContainer &error)
 {
     // copy and prepare input string
     std::string preparedString = inputString;
@@ -109,9 +111,8 @@ ObjParser::parse(ObjItem &result,
         // check result
         if(state == false)
         {
-            ErrorContainer error;
-            error.errorMessage = "ERROR while parsing obj-file content in line "
-                                 + std::to_string(i);
+            error.addMeesage("ERROR while parsing obj-file content in line "
+                             + std::to_string(i));
             LOG_ERROR(error);
             return false;
         }

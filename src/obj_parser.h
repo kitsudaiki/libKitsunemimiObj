@@ -10,6 +10,7 @@
 #define OBJ_PARSER_H
 
 #include <libKitsunemimiObj/obj_item.h>
+#include <libKitsunemimiCommon/logger.h>
 
 namespace Kitsunemimi
 {
@@ -22,7 +23,8 @@ public:
     ObjParser();
 
     bool parse(ObjItem &result,
-               const std::string &inputString);
+               const std::string &inputString,
+               ErrorContainer &error);
 
 private:
     bool parseIndizes(ObjItem &result,

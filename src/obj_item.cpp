@@ -21,15 +21,17 @@ namespace Obj
  *
  * @param result empty obj-item for the parsed information
  * @param input input-string, which should be parsed
+ * @param error reference for error-output
  *
  * @return true, if successful, else false
  */
 bool
 parseString(ObjItem &result,
-            const std::string &input)
+            const std::string &input,
+            ErrorContainer &error)
 {
     ObjParser parser;
-    return parser.parse(result, input);
+    return parser.parse(result, input, error);
 }
 
 /**

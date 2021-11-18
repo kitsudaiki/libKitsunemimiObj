@@ -42,7 +42,7 @@ IMPORTANT: All my projects are only tested on Linux.
 
 Repository-Name | Version-Tag | Download-Path
 --- | --- | ---
-libKitsunemimiCommon | v0.22.0 |  https://github.com/kitsudaiki/libKitsunemimiCommon.git
+libKitsunemimiCommon | v0.23.0 |  https://github.com/kitsudaiki/libKitsunemimiCommon.git
 
 HINT: These Kitsunemimi-Libraries will be downloaded and build automatically with the build-script below.
 
@@ -106,16 +106,17 @@ Example usage in code:
 
 ```cpp
 #include <libKitsunemimiObj/obj_item.h>
+#include <libKitsunemimiCommon/logger.h>
 
 // parse string
 Kitsunemimi::Obj::ObjItem parsedItem;
 bool ret = false;
+Kitsunemimi::Error error;
 
-
-ret = Kitsunemimi::Obj::parseString(parsedItem, input-string);
+ret = Kitsunemimi::Obj::parseString(parsedItem, input-string, error);
 // if ret is true, when it was successful
 // all parsed information are stored in the parsedItem-object
-
+// if failed the error can be printed with LOG_ERROR(error);
 
 // create a string again
 const std::string output_string = "";

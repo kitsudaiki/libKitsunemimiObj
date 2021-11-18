@@ -23,7 +23,9 @@ void
 ObjItem_Test::parse_test()
 {
     Kitsunemimi::Obj::ObjItem result;
-    bool ret = Kitsunemimi::Obj::parseString(result, getTestString());
+    Kitsunemimi::ErrorContainer error;
+
+    bool ret = Kitsunemimi::Obj::parseString(result, getTestString(), error);
     TEST_EQUAL(ret, true);
 
     TEST_EQUAL(result.vertizes.at(0).x, 2.0f);
@@ -43,7 +45,8 @@ void
 ObjItem_Test::converter_test()
 {
     Kitsunemimi::Obj::ObjItem result;
-    bool ret = Kitsunemimi::Obj::parseString(result, getTestString());
+    Kitsunemimi::ErrorContainer error;
+    bool ret = Kitsunemimi::Obj::parseString(result, getTestString(), error);
     TEST_EQUAL(ret, true);
 
     std::string convertedString = "";
