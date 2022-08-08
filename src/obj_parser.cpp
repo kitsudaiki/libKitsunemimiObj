@@ -8,8 +8,8 @@
 
 #include "obj_parser.h"
 
-#include <libKitsunemimiCommon/common_methods/string_methods.h>
-#include <libKitsunemimiCommon/common_methods/vector_methods.h>
+#include <libKitsunemimiCommon/methods/string_methods.h>
+#include <libKitsunemimiCommon/methods/vector_methods.h>
 #include <libKitsunemimiCommon/logger.h>
 
 namespace Kitsunemimi
