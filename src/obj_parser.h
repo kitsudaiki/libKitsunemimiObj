@@ -14,8 +14,6 @@
 
 namespace Kitsunemimi
 {
-namespace Obj
-{
 
 class ObjParser
 {
@@ -45,7 +43,6 @@ private:
                   const std::string &input);
 };
 
-}
-}
+}  // namespace Kitsunemimi
 
 #endif // OBJ_PARSER_H

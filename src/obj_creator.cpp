@@ -10,8 +10,6 @@
 
 namespace Kitsunemimi
 {
-namespace Obj
-{
 
 /**
  * @brief constructor
@@ -106,5 +104,4 @@ ObjCreator::create(std::string &convertedString,
     return true;
 }
 
-}
-}
+}  // namespace Kitsunemimi

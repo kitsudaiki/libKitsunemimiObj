@@ -16,8 +16,6 @@
 
 namespace Kitsunemimi
 {
-namespace Obj
-{
 
 struct Vec4
 {
@@ -51,7 +49,6 @@ bool parseString(ObjItem &result,
                  ErrorContainer &error);
 bool convertToString(std::string &convertedString, const ObjItem &input);
 
-}  // namespace Obj
 }  // namespace Kitsunemimi
 
 #endif // OBJ_ITEM_H

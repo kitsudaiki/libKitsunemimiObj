@@ -13,8 +13,6 @@
 
 namespace Kitsunemimi
 {
-namespace Obj
-{
 
 class ObjCreator
 {
@@ -25,7 +23,6 @@ public:
                 const ObjItem &input);
 };
 
-}
-}
+}  // namespace Kitsunemimi
 
 #endif // OBJ_CREATOR_H
