@@ -109,18 +109,18 @@ Example usage in code:
 #include <libKitsunemimiCommon/logger.h>
 
 // parse string
-Kitsunemimi::Obj::ObjItem parsedItem;
+Kitsunemimi::ObjItem parsedItem;
 bool ret = false;
 Kitsunemimi::Error error;
 
-ret = Kitsunemimi::Obj::parseString(parsedItem, input-string, error);
+ret = Kitsunemimi::parseString(parsedItem, input-string, error);
 // if ret is true, when it was successful
 // all parsed information are stored in the parsedItem-object
 // if failed the error can be printed with LOG_ERROR(error);
 
 // create a string again
 const std::string output_string = "";
-ret = Kitsunemimi::Obj::convertToString(output_string, parsedItem);
+ret = Kitsunemimi::convertToString(output_string, parsedItem);
 // if ret is true, when it was successful
 // output_string contains the now the string, which is generated from the parsedItem-object
 
