@@ -22,10 +22,10 @@ ObjItem_Test::ObjItem_Test()
 void
 ObjItem_Test::parse_test()
 {
-    Kitsunemimi::Obj::ObjItem result;
+    Kitsunemimi::ObjItem result;
     Kitsunemimi::ErrorContainer error;
 
-    bool ret = Kitsunemimi::Obj::parseString(result, getTestString(), error);
+    bool ret = Kitsunemimi::parseString(result, getTestString(), error);
     TEST_EQUAL(ret, true);
 
     TEST_EQUAL(result.vertizes.at(0).x, 2.0f);
@@ -44,13 +44,13 @@ ObjItem_Test::parse_test()
 void
 ObjItem_Test::converter_test()
 {
-    Kitsunemimi::Obj::ObjItem result;
+    Kitsunemimi::ObjItem result;
     Kitsunemimi::ErrorContainer error;
-    bool ret = Kitsunemimi::Obj::parseString(result, getTestString(), error);
+    bool ret = Kitsunemimi::parseString(result, getTestString(), error);
     TEST_EQUAL(ret, true);
 
     std::string convertedString = "";
-    ret = Kitsunemimi::Obj::convertToString(convertedString, result);
+    ret = Kitsunemimi::convertToString(convertedString, result);
     //std::cout<<convertedString<<std::endl;
     TEST_EQUAL(convertedString, getCompareString());
 }
