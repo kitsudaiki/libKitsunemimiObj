@@ -14,8 +14,6 @@
 
 namespace Kitsunemimi
 {
-namespace Obj
-{
 
 /**
  * @brief default-constructor
@@ -295,5 +293,4 @@ ObjParser::parseInt(int &result,
     return std::string(err).size() == 0;
 }
 
-}
-}
+}  // namespace Kitsunemimi

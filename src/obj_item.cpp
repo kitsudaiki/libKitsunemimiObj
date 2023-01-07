@@ -13,8 +13,6 @@
 
 namespace Kitsunemimi
 {
-namespace Obj
-{
 
 /**
  * @brief parse an obj-string
@@ -51,5 +49,4 @@ convertToString(std::string &convertedString,
     return creator.create(convertedString, input);
 }
 
-}  // namespace Obj
 }  // namespace Kitsunemimi
